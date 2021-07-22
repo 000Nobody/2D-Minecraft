@@ -1,2 +1,2 @@
 # 2D Minecraft
- A simplified, 2D recreation of the game Minecraft
+ A simplified, 2D recreation of the game Minecraft (Currently in Beta)
