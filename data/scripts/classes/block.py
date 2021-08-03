@@ -17,14 +17,15 @@ for img in os.listdir(imgs_dir):
 
 class Block:
 
-	def __init__(self, chunk, pos, block_type):
-		self.chunk = chunk
-		self.pos = pos 
+	def __init__(self, pos, block_type):
+		self.pos = pos
 		self.type = block_type
 		self.x = pos[0]
 		self.y = pos[1]
 		self.coords = (self.x//TILE_SIZE, self.y//TILE_SIZE)
+		self.chunk = (self.coords[0] >> 3, self.coords[1] >> 3)
 		self.rect = pygame.Rect(self.x, self.y, TILE_SIZE, TILE_SIZE)
+		
 
 	@property
 	def img(self):
@@ -35,6 +36,7 @@ class Block:
 	def get_scrolled_rect(self, scroll):
 		rect = pygame.Rect(self.x - scroll[0], self.y - scroll[1], TILE_SIZE, TILE_SIZE)
 		return rect
+
 
 	def get_scrolled_pos(self, scroll):
 		pos = (self.x - scroll[0], self.y - scroll[1])

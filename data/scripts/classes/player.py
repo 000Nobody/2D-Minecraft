@@ -95,8 +95,8 @@ class Player:
         if (self.selected_block and self.selected_block.type == 'air'):
             if hotbar.selected_slot_content != []:
                 if hotbar.selected_slot_content[1] > 0:
-                    terrain.add_block(self.selected_block.pos, hotbar.selected_slot_content[0])
-                    hotbar.slot_contents[hotbar.selected_slot][1] -= 1
+                    if terrain.add_block(self.selected_block.pos, hotbar.selected_slot_content[0]):
+                        hotbar.slot_contents[hotbar.selected_slot][1] -= 1
 
 
     def load_animations(self, dir):

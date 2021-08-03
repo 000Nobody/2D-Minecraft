@@ -35,7 +35,7 @@ while __name__ == '__main__':
         (player.rect.y - scroll[1] - (WINDOW_SIZE[1]/2 + player.height/2 - 100)) / SCROLL_STIFF
     )
 
-    for event in pygame.event.get():
+    for event in pygame.event.get(): 
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
