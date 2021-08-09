@@ -31,13 +31,30 @@ class Player:
         self.animation_counter = 0
         self.animation_flip = False
 
+        self.death = False
+
+        self.firstFall = True
+        
+        self.fallDistance = 0
+
 
     def move(self, tile_rects):
         
         self.rect, self.collision_types, self.hit_list = move(self.rect, tile_rects, self.movement)
 
+        print(self.fallDistance)
+
         if self.collision_types['bottom'] and not self.jumping:
             self.movement[1] = 1
+        
+        if self.collision_types['bottom'] and self.fallDistance >= 5:
+            if not self.firstFall:
+                self.death = True
+            self.fallDistance = 0
+            self.firstFall = False 
+        
+        if not self.collision_types['bottom'] and not self.movement[1] <= 15:
+            self.fallDistance+= 1
         
         if not self.collision_types['bottom']:
             self.jumping = False

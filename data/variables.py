@@ -1,6 +1,6 @@
 import pygame
 
-WINDOW_SIZE = (1920, 1080) # Measured in pixels
+WINDOW_SIZE = (1280,720) # Measured in pixels
 GRAVITY_STRENGTH = 1
 CHUNK_SIZE = 8 # Measured in blocks. I do not recommend changing this
 TILE_SIZE = 64 # Measured in pixels
