@@ -1,3 +1,4 @@
+from data.variables import *
 import pygame
 import math
 
@@ -57,3 +58,24 @@ def draw_rect_alpha(display, color, rect):
     shape_surf = pygame.Surface(pygame.Rect(rect).size, pygame.SRCALPHA)
     pygame.draw.rect(shape_surf, color, shape_surf.get_rect())
     display.blit(shape_surf, rect)
+
+def draw_text(surf, text, size, x, y):
+    font = pygame.font.Font(None, size)
+    text_surface = font.render(text, True, (0,0,0))
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (x, y)
+    surf.blit(text_surface, text_rect)
+
+def show_death_screen(screen):
+    WIDTH = WINDOW_SIZE[0]
+    HEIGHT = WINDOW_SIZE[1]
+    draw_text(screen, "You Died!", 64, WIDTH / 2, HEIGHT / 4)
+    draw_text(screen, "You Fell From High Place", 40,
+              WIDTH / 2, HEIGHT / 2)
+    draw_text(screen, "Noob", 30, WIDTH / 2, HEIGHT * 3 / 4)
+    pygame.display.flip()
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
